@@ -3,77 +3,59 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Sign in to DecisionSpace Integration Server</title>
     <style>
+        @font-face {
+            font-family: 'Open Sans';
+            src: url('https://dssecurity.dsif.dazlmkleodev01.ienergycloud.solutions/auth/resources/keaf8/login/darktheme/node_modules/patternfly/dist/fonts/OpenSans-Light-webfont.woff2') format('woff2');
+            font-weight: 300;
+        }
+        @font-face {
+            font-family: 'Open Sans';
+            src: url('https://dssecurity.dsif.dazlmkleodev01.ienergycloud.solutions/auth/resources/keaf8/login/darktheme/node_modules/patternfly/dist/fonts/OpenSans-Bold-webfont.woff2') format('woff2');
+            font-weight: 700;
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Open Sans', Arial, sans-serif;
             background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
-        .header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #d3d3d3;
-            padding: 15px;
-            text-align: center;
-            font-size: 18px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .login-container {
-            background: #fff;
-            width: 1075px;
-            height: 640px;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .left-section {
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 425px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .globe-image {
-            width: 300px;
-            height: 300px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="%23f0f0f0" stroke="%23666" stroke-width="2"/><circle cx="70" cy="60" r="30" fill="%23ff6b6b"/><circle cx="130" cy="80" r="25" fill="%23ffd93d"/><circle cx="100" cy="130" r="35" fill="%236bcf7f"/></svg>') center/contain no-repeat;
-        }
-        .right-section {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            left: 425px;
+        .login-box {
             background: #fff;
             padding: 60px 80px;
+            width: 500px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        .halliburton-logo {
-            position: absolute;
-            top: 20px;
-            right: 30px;
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 20px;
+        }
+        .logo-red {
             color: #e31837;
-            font-weight: bold;
-            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
-        .halliburton-logo::after {
-            content: ' | Landmark';
+        .logo-separator {
+            color: #999;
+            margin: 0 10px;
+        }
+        .logo-gray {
             color: #666;
-            font-weight: normal;
+            font-weight: 300;
         }
-        .form-container {
-            margin-top: 100px;
+        .alert {
+            background: #fff8dc;
+            border-left: 4px solid #ffa500;
+            color: #856404;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-size: 13px;
         }
         .form-group {
             margin-bottom: 25px;
@@ -83,94 +65,71 @@
             margin-bottom: 8px;
             color: #333;
             font-size: 14px;
+            font-weight: 300;
         }
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
             font-size: 14px;
+            font-family: 'Open Sans', Arial, sans-serif;
         }
-        .sign-in-btn {
-            background: #90ee90;
-            border: 1px solid #7dc67d;
-            padding: 10px 40px;
-            color: #333;
-            font-size: 14px;
+        .btn-signin {
+            background: #6bcf7f;
+            border: none;
+            padding: 12px 50px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
-            margin-top: 20px;
-        }
-        .sign-in-btn:hover {
-            background: #7dc67d;
-        }
-        .or-sign-in {
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #666;
-            font-size: 14px;
-        }
-        .oidc-links a {
+            margin-top: 15px;
             display: block;
-            color: #0088cc;
-            text-decoration: none;
-            margin: 8px 0;
-            font-size: 14px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-signin:hover {
+            background: #5ab76d;
         }
         .footer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
-            left: 425px;
+            left: 0;
             right: 0;
             background: #e31837;
             color: white;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
             font-size: 14px;
+            font-weight: 300;
         }
-        .alert {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            color: #856404;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            font-size: 13px;
+        .footer strong {
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <div class="header">SIGN IN TO DECISIONSPACE INTEGRATION SERVER</div>
-    <div class="login-container">
-        <div class="left-section">
-            <div class="globe-image"></div>
+    <div class="login-box">
+        <div class="logo">
+            <span class="logo-red">HALLIBURTON</span><span class="logo-separator">|</span><span class="logo-gray">Landmark</span>
         </div>
-        <div class="right-section">
-            <div class="halliburton-logo">HALLIBURTON</div>
-            <div class="form-container">
-                <div class="alert">
-                    Authentication required: Please verify your credentials to access this protected resource.
-                </div>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <button type="submit" class="sign-in-btn">Sign in</button>
-                </form>
-                <div class="or-sign-in">Or sign in with</div>
-                <div class="oidc-links">
-                    <a href="#">OIDC-preview</a>
-                    <a href="#">OIDC</a>
-                </div>
+        <div class="alert">
+            Authentication required: Please verify your credentials to access this protected resource.
+        </div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required autofocus>
             </div>
-        </div>
-        <div class="footer">
-            Powered by<br><strong>DS Integration Server</strong>
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn-signin">Sign in</button>
+        </form>
+    </div>
+    <div class="footer">
+        Powered by<br><strong>DS Integration Server</strong>
     </div>
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
